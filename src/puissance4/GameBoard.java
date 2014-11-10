@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package puissance4;
 
 import java.util.ArrayList;
@@ -26,8 +25,8 @@ public class GameBoard {
         historique = new ArrayList<Turn>();
         initialiser();
     }
-    
-    public ArrayList<Turn> getHistorique(){
+
+    public ArrayList<Turn> getHistorique() {
         return historique;
     }
 
@@ -77,8 +76,8 @@ public class GameBoard {
 
     //pose le coup sur le plateau
     public void jouer(Turn turn) {
-            etatPlateau[turn.pos.x][turn.pos.y] = turn.id;
-            historique.add(turn);
+        etatPlateau[turn.pos.x][turn.pos.y] = turn.id;
+        historique.add(turn);
     }
 
     //annule le dernier coup joué
@@ -108,7 +107,7 @@ public class GameBoard {
 
     //renvoi 0 si la case (x,y) est hors du plateau, renvoi l'id de la case sinon
     public int getNoDebord(int x, int y) {
-        if ((x > longueur) || (y > largeur) || (x <1) || (y<1) ) {
+        if ((x > longueur) || (y > largeur) || (x < 1) || (y < 1)) {
             return 0;
         } else {
             return etatPlateau[x][y];
@@ -129,7 +128,14 @@ public class GameBoard {
         int i, j;
         for (i = 1; i <= longueur; i++) {
             for (j = 1; j <= largeur; j++) {
-                strPlat = strPlat + etatPlateau[j][i] + " ";
+                if (etatPlateau[j][i] == 0) {
+                    strPlat = strPlat + "◌ ";
+                } else if (etatPlateau[j][i] == 1) {
+                    strPlat = strPlat + "● ";
+
+                } else {
+                    strPlat = strPlat + "○ ";
+                }
             }
             strPlat = strPlat + "\n";
         }
@@ -157,4 +163,3 @@ public class GameBoard {
     }
 
 }
-

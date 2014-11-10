@@ -16,7 +16,11 @@ public class Puissance4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        GameBoard game = new GameBoard(5,5);
+        System.out.println(game.toString());
+        game.jouer(new Turn(1, new Position (1,1)));
+        game.jouer(new Turn(2, new Position (1,5)));
+        System.out.println(game.toString());
     }
     
 }
